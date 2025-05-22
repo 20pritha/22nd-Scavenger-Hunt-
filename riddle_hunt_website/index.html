@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Birthday Riddle Hunt</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div class="container">
+        <h1>🎉 Birthday Riddle Hunt 🎉</h1>
+        <div id="riddle-box">
+            <p id="riddle-text"></p>
+            <input type="text" id="answer" placeholder="Type your answer..." />
+            <button onclick="checkAnswer()">Submit</button>
+            <p id="message"></p>
+        </div>
+    </div>
+
+    <script>
+        const riddles = [
+            { q: "You can’t see me, but I’m always watching. You can’t touch me, but I’m always felt. I follow you, but only in darkness.", a: "fear" },
+            { q: "You measure my life in hours, I serve by being devoured. Thin I am quick, fat I am slow. The wind is my foe.", a: "candle" },
+            { q: "I once was a beast, an ant so feared,\nNow I serve my king, with voice that's weird.\nWith claws so sharp and loyalty grand,\nI'd destroy whole armies at a wave of his hand.\nI bow, I hiss, I serve with pride—\nFind the one with Beru vibes inside.", a: "beru" },
+            { q: "She knows the plan, she’s got the charm,\nWith her, the world’s a little more warm.\nShe’s holding a clue, that’s no lie—\nGo find the one who catches his eye.", a: "1942" },
+            { q: "He walks with swag, stands tall with pride,\nTeases you but still takes your side.\nHe’s older, cooler, kind of sly—\nGo find this guy, don’t be shy!", a: "8871" },
+            { q: "He took you to sand, pretending “just chill,”\nBut his hands were sweaty — nerves hard to kill.\nThe waves were crashing, his voice kinda cracked,\nHe dropped down (on purpose!) — heart fully attacked.\nYou said “yes,” and now here we are —\nFind the spot where he fumbled like a star.", a: "6/10/2024" },
+            { q: "I march in squads, I roll with fate,\nMy dice decide my soldiers' state.\nWith paints and glue, I come to life,\nBut on the field, I bring the strife.\nI'm not a toy, I’m war with flair—\nFind the one who builds armies with care.", a: "warhammer" },
+            { q: "I can be cracked, made, told, and played. But if you don’t get me, you just stare in dismay.", a: "joke" },
+            { q: "I’m not alive, but I grow. I have no lungs, but I need air. I have no mouth, but water kills me.", a: "fire" },
+            { q: "With vintage charm and cakes so sweet,\nA cozy corner, the perfect treat.\nCoffee brews and secrets bake,\nWhere red velvet steals the cake.\nIf hunger hits and vibes feel right,\nFind the place that’s pure delight.", a: "glen’s bakehouse" },
+            { q: "Break me, and I get stronger. Stretch me, and I snap. Ignore me, and I wither. What am I?", a: "trust" },
+            { q: "He’s wise, kind, and aging fine,\nWith creams and oils that always shine.\nSkincare king with a glowing face,\nFind him in his self-care space.", a: "3209" },
+            { q: "What number becomes smaller when you flip it upside down?", a: "nine" },
+            { q: "I exist in theory, but everyone blames me. I never speak, yet silence me and your secrets are free.", a: "wall" },
+            { q: "I’m the beginning of eternity, the end of time and space. The beginning of every end, and the end of every place.", a: "e" },
+            { q: "Small in size but big in cheer,\nShe’s like a sister who’s always near.\nWith laughter, love, and playful fun,\nShe’s hiding a clue—go, little one!", a: "5724" },
+            { q: "What comes first when you think second, and disappears when you act?", a: "doubt" },
+            { q: "Wrapped in seaweed, cool and neat,\nRice and fish, the perfect treat.\nI don’t need fire, I’m served raw,\nOne bite in, you’re in love — in awe.\nSoy me up and take a dip,\nFind the fan of every sushi trip.", a: "sushi" },
+            { q: "I’m only useful once I’m broken.", a: "egg" },
+            { q: "Wings of dreams and eyes on the sky,\nHe’s aiming high, he wants to fly.\nWith duty and honor in his heart,\nFind him before he takes off to start!", a: "7811" },
+            { q: "You did it bday boy, I love you so very much 💚", a: "done" },
+            { q: "She knows where everything goes,\nFrom your socks to tasty doughs.\nShe’s the boss and hugs you tight,\nFind her where things feel just right.", a: "1095" }
+        ];
+        let current = 0;
+
+        function checkAnswer() {
+            const input = document.getElementById("answer").value.trim().toLowerCase();
+            const msg = document.getElementById("message");
+            if (input === riddles[current].a.toLowerCase()) {
+                current++;
+                msg.textContent = "Correct!";
+                document.getElementById("answer").value = "";
+                if (current < riddles.length) {
+                    document.getElementById("riddle-text").textContent = riddles[current].q;
+                } else {
+                    document.getElementById("riddle-text").textContent = "🎉 You finished the hunt! Happy Birthday! 🎉";
+                    document.getElementById("answer").style.display = "none";
+                    document.querySelector("button").style.display = "none";
+                }
+            } else {
+                msg.textContent = "Try again!";
+            }
+        }
+
+        window.onload = () => {
+            document.getElementById("riddle-text").textContent = riddles[0].q;
+        };
+    </script>
+</body>
+</html>
